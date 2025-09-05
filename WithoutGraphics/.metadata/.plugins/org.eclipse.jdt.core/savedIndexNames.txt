@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\Toni1\SteelAndHonor\WithoutGraphics\.metadata\.plugins\org.eclipse.jdt.core
+3017468400.index
+1533642933.index
+1865797976.index
