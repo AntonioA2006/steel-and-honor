@@ -1,0 +1,11 @@
+package Game.User;
+
+public class Start {
+	private int State = 0;
+	public Start(int op) {
+		this.State = op;
+	}
+	public static int getStartState() {
+		return State;
+	}
+}

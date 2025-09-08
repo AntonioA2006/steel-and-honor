@@ -1,0 +1,23 @@
+package Game.User;
+import java.util.ArrayList;
+public class User {
+	
+	private String name;
+	private int exp;
+	private int level;
+	private int gold;
+	
+	private ArrayList<String> Inventory;//todo crear Clase invetario
+	
+	public User(String n, int exp, int level, int gold ) {
+		this.name = n; 
+		this.exp = exp; 
+		this.level = level; 
+		this.gold = gold; 
+	}
+	
+	public  void setName(String UserName) {
+		this.name = UserName;
+	}
+	
+}

@@ -1,0 +1,12 @@
+package Game.User;
+
+public class User {
+	private String name;
+	private int exp;
+	private int level;
+	private int gold;
+	private ArrayList<String> Inventory
+	public User(String n, int exp,int level, int gold ) {
+		
+	}
+}

@@ -1,0 +1,14 @@
+package Personajes;
+
+import Personajes.Caracteres.Mage;
+import Personajes.Caracter;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Caracter mage = new Mage("Antonio", 200,2000,222);
+	}
+
+}
