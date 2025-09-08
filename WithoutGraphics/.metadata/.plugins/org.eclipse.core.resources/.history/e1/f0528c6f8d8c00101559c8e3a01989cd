@@ -49,8 +49,9 @@ public class Main {
 					"  \\/_____/   \\/_____/   \\/_____/   \\/_____/   \\/_____/     \\/_/      \\/_/\\/_/      \\/_____/   \\/_/       \\/_/   \\/_/   \\/_____/   \\/_/ \\/_/ ";
 			
 			
-			System.out.println(CYAN + option + RESET);
-			System.out.println(repeatChar('-',80));
+			System.out.println(CYAN + option + RESET);	
+			marks();
+			System.out.println( );
 			System.out.println("LOGIN [0]" + "   " + "REGISTER [1]" + "  " + "OTHER [EXIT]" );
 			//https://patorjk.com/software/taag
 			// System.out.println(CYAN+ register + RESET );

@@ -13,20 +13,13 @@ public class Main {
 	public static final String BLUE = "\u001B[34m";
 	
 	public static void clearScreen() {
-		try {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } catch (Exception e) {}
+		for (int i = 0; i < 1000; i++) {
+	        System.out.println();
+	    }
 	}
-	public static  String repeatChar(char c, int times) {
-	    StringBuilder sb = new StringBuilder();
-	    for (int i = 0; i < times; i++) sb.append(c);
-	    return sb.toString();
-	}
-
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		clearScreen();
 		try {
 		
 			System.out.println(CYAN +
@@ -50,7 +43,8 @@ public class Main {
 			
 			
 			System.out.println(CYAN + option + RESET);
-			System.out.println(repeatChar('-',80));
+			System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println( );
 			System.out.println("LOGIN [0]" + "   " + "REGISTER [1]" + "  " + "OTHER [EXIT]" );
 			//https://patorjk.com/software/taag
 			// System.out.println(CYAN+ register + RESET );

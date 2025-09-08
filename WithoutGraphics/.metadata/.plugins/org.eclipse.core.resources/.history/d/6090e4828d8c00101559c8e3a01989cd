@@ -50,7 +50,7 @@ public class Main {
 			
 			
 			System.out.println(CYAN + option + RESET);
-			System.out.println(repeatChar('-',80));
+			System.out.println( );
 			System.out.println("LOGIN [0]" + "   " + "REGISTER [1]" + "  " + "OTHER [EXIT]" );
 			//https://patorjk.com/software/taag
 			// System.out.println(CYAN+ register + RESET );

@@ -17,12 +17,29 @@ public class Main {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         } catch (Exception e) {}
 	}
-	public static  String repeatChar(char c, int times) {
+	public  String repeatChar(char c, int times) {
 	    StringBuilder sb = new StringBuilder();
 	    for (int i = 0; i < times; i++) sb.append(c);
 	    return sb.toString();
 	}
-
+	public static void marks() {
+		try {
+		    Process p = new ProcessBuilder("cmd", "/c", "mode con").start();
+		    java.util.Scanner s = new java.util.Scanner(p.getInputStream());
+		    int width = 80; // default
+		    while (s.hasNextLine()) {
+		        String line = s.nextLine();
+		        if (line.contains("Columns")) {
+		            width = Integer.parseInt(line.replaceAll("[^0-9]", ""));
+		            break;
+		        }
+		    }
+		    s.close();
+		    System.out.println(repeatChar('-', width));
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
@@ -49,8 +66,9 @@ public class Main {
 					"  \\/_____/   \\/_____/   \\/_____/   \\/_____/   \\/_____/     \\/_/      \\/_/\\/_/      \\/_____/   \\/_/       \\/_/   \\/_/   \\/_____/   \\/_/ \\/_/ ";
 			
 			
-			System.out.println(CYAN + option + RESET);
-			System.out.println(repeatChar('-',80));
+			System.out.println(CYAN + option + RESET);	
+			marks();
+			System.out.println( );
 			System.out.println("LOGIN [0]" + "   " + "REGISTER [1]" + "  " + "OTHER [EXIT]" );
 			//https://patorjk.com/software/taag
 			// System.out.println(CYAN+ register + RESET );
