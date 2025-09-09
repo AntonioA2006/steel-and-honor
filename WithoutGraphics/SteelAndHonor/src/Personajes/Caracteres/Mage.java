@@ -10,4 +10,11 @@ public class Mage extends Caracter {
         System.out.println(name + " lanza Fireball 🔥!");
         target.takeDamage(attack + 10);
     }
+
+	@Override
+	public void setLore() {
+		this.Lore = "Maestro de la magia ofensiva y destructiva";
+		
+	}
+    
 }

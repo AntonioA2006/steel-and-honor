@@ -27,5 +27,8 @@ public class User {
 	public String getCharterName() {
 		return mainCharter.getCharterName();
 	}
+	public Caracter getCharter() {
+		return this.mainCharter;
+	}
 	
 }

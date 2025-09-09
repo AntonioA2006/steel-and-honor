@@ -13,4 +13,10 @@ public class Knight extends Caracter{
 		
 	}
 
+	@Override
+	public void setLore() {
+		// TODO Auto-generated method stub
+		this.Lore = "Guerrero con honor, buena defensa y liderazgo.";
+	}
+
 }

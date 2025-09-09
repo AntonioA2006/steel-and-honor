@@ -9,5 +9,11 @@ public class Warrior extends Caracter {
         System.out.println(name + " usa Slash!");
         target.takeDamage(attack + 5);
     }
+
+	@Override
+	public void setLore() {
+		// TODO Auto-generated method stub
+		this.Lore = " Fuerte en combate cuerpo a cuerpo, mucha defensa.";
+	}
     
 }

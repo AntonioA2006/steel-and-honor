@@ -1,0 +1,20 @@
+package Personajes.Caracteres;
+
+public class Mage extends Caracter {
+    public Mage(String name, int hp, int attack, int defense, String chName) {
+        super(name, hp, attack, defense, chName);
+    }
+
+    @Override
+    public void specialAttack(Caracter target) {
+        System.out.println(name + " lanza Fireball 🔥!");
+        target.takeDamage(attack + 10);
+    }
+
+	@Override
+	public void setLore() {
+		this.Lore = "Maestro de la magia ofensiva y destructiva"
+		
+	}
+    
+}

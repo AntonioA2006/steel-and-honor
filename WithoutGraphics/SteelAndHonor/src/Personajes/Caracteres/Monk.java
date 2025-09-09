@@ -13,4 +13,11 @@ public class Monk extends Caracter {
 		
 	}
 
+	@Override
+	public void setLore() {
+		// TODO Auto-generated method stub
+		this.Lore = "Pelea con artes marciales, rápido y disciplinado.";
+	}
+	
+
 }

@@ -1,0 +1,39 @@
+package Personajes.Caracteres;
+
+public abstract class Caracter {
+    protected String name;
+    protected String Chartername, Lore;
+    protected int hp, attack, defense;
+    protected int[] Stats = {hp, attack,defense};
+    public Caracter(String name, int hp, int attack, int defense, String charter) {
+        this.name = name;
+        this.hp = hp;
+        this.attack = attack;
+        this.defense = defense;
+        this.Chartername = charter;
+    }
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
+
+    public void takeDamage(int dmg) {
+        int realDmg = Math.max(0, dmg - defense);
+        hp -= realDmg;
+        System.out.println(name + " recibió " + realDmg + " de daño. HP = " + hp);
+
+    }	
+    
+    public String getCharterName() {
+    	return this.Chartername;
+    }
+    public int[] getStats() {
+    	return Stats;
+    }
+    public String getLore(){
+    	return this.Lore;
+    }
+
+    public abstract void specialAttack(Caracter target);
+    public abstract String setLore(String lore);
+}

@@ -2,15 +2,19 @@ package Personajes.Caracteres;
 
 public abstract class Caracter {
     protected String name;
-    protected String Chartername;
+    protected String Chartername, Lore;
     protected int hp, attack, defense;
-
+    protected int[] Stats  = new int[3];
     public Caracter(String name, int hp, int attack, int defense, String charter) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;
         this.defense = defense;
         this.Chartername = charter;
+        this.Stats[0] = hp;
+        this.Stats[1] = attack;
+        this.Stats[2] = defense;
+        this.setLore();
     }
 
     public boolean isAlive() {
@@ -27,6 +31,13 @@ public abstract class Caracter {
     public String getCharterName() {
     	return this.Chartername;
     }
+    public int[] getStats() {
+    	return Stats;
+    }
+    public String getLore(){
+    	return this.Lore;
+    }
 
     public abstract void specialAttack(Caracter target);
+    public abstract void setLore();
 }

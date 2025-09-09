@@ -3,6 +3,7 @@ package Game.User;
 import java.util.Scanner;
 
 import Personajes.Caracteres.Archer;
+import Personajes.Caracteres.Caracter;
 import Personajes.Caracteres.Knight;
 import Personajes.Caracteres.Mage;
 import Personajes.Caracteres.Monk;
@@ -61,10 +62,15 @@ public class Start {
 			}else if(opt == 5) {
 				user.setCharter(new Robber(user.getName(), 200,200,200, ch[5]));
 			}
-			System.out.println("Enhorabuena has elegido " +user.getCharterName()+ " !!");
-					
-				
-				
+			System.out.println("Enhorabuena has elegido " + user.getCharterName()+ " !!");
+			Thread.sleep(2000);
+			int[] stats = user.getCharter().getStats();
+			System.out.println("El personaje que seleccionaste " + user.getCharterName());
+			System.out.println("tienes las cualidades de " +  user.getCharter().getLore());
+			System.out.println("----------------------------------------------------------");	
+			System.out.println("Cuenta con " + stats[0] + " de vida " + stats[1] +  " puntos de ataque" 
+								+ " y " + stats[2] + " de defensa");
+			
 			}else if(op == 1){
 				//nothing here ):
 			}else if(op == 2) {
