@@ -65,7 +65,6 @@ public class Main {
                     op = s.nextInt();
 
                     if (op < 0 || op > 2) {
-                    	clearScreen();
                         throw new WrongChoiceException("Opción no válida. Debes seleccionar 0, 1 o 2.");
                     }
                     break;

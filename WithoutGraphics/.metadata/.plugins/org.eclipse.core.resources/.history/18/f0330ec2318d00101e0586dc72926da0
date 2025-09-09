@@ -54,18 +54,18 @@ public class Main {
             Thread.sleep(1000);
             System.out.println();
 
+            System.out.println("SELECCIONA UNA OPCION:");
             System.out.println(repeatChar('-', 80));
 
             int op = 0;
             while (true) {
-            	System.out.println("SELECCIONA UNA OPCION:");
+                System.out.println("Selecciona una opción:");
                 System.out.println("NEW GAME [0]   PLAY [1]   CLOSE [2]");
 
                 try {
                     op = s.nextInt();
 
                     if (op < 0 || op > 2) {
-                    	clearScreen();
                         throw new WrongChoiceException("Opción no válida. Debes seleccionar 0, 1 o 2.");
                     }
                     break;

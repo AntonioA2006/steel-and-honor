@@ -1,0 +1,6 @@
+
+public class WrongchoiceWxception extends Exception {
+    public WrongchoiceWxception(String message) {
+        super(message);
+    }
+}
