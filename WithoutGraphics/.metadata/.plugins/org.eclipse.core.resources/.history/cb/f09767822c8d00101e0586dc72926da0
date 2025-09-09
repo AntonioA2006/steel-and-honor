@@ -1,0 +1,5 @@
+package Personajes.Caracteres;
+
+public class Archer extends Caracter {
+
+}

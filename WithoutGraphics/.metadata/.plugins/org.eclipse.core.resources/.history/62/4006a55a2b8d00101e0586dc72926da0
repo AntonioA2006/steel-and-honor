@@ -1,0 +1,72 @@
+package Game.User;
+
+import java.util.Scanner;
+
+import Personajes.Caracteres.Mage;
+
+public class Start {
+	private String[] ch = {"MAGO", "GUERRERO"};
+	private int State = 0;
+	public Start() {}
+	public  int getStartState() {
+		return this.State;
+	}
+	public  void clearScreen() {
+		try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {}
+	}
+	
+	public void gameClose() {
+		System.exit(0);
+	}
+	public void setOption(int op) {
+		Scanner s = new Scanner(System.in);
+		User user = new User();
+		this.clearScreen();
+		try {
+			Thread.sleep(4000);
+			if(op == 0) {
+			System.out.println("Elije tu Nombre de Batalla!!");	
+			String name = s.nextLine();
+			user.setName(name);
+			Thread.sleep(2000);	
+				
+				
+				
+			System.out.println("Bienvenido Viajero Elige tu Personaje");
+			int icm = 0;
+			for(String x : ch) {
+					System.out.println(this.formatOption(x, icm));
+					icm++;
+			}
+			int opt = s.nextInt();	
+			
+			if(opt == 0) {
+					user.setCharter(new Mage(user.getName(), 200,200,200));
+					
+					
+			}
+			
+					
+				
+				
+			}else if(op == 1){
+				
+				
+				
+				System.out.println("");
+			}else if(op == 2) {
+				this.gameClose();
+			}
+			
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	
+		
+	}
+	 private String formatOption(String ch, int icm) {
+	        return "[" + icm + "] " + ch;
+	   }
+}

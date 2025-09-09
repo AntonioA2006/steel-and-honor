@@ -1,8 +1,8 @@
 package Personajes.Caracteres;
 
 public class Mage extends Caracter {
-    public Mage(String name, int hp, int attack, int defense) {
-        super(name, hp, attack, defense);
+    public Mage(String name, int hp, int attack, int defense, String chName) {
+        super(name, hp, attack, defense, chName);
     }
 
     @Override

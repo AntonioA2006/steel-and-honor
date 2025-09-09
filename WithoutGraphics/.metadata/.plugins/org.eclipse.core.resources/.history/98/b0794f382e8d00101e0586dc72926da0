@@ -1,0 +1,83 @@
+package Game.User;
+
+import java.util.Scanner;
+
+import Personajes.Caracteres.Archer;
+import Personajes.Caracteres.Knight;
+import Personajes.Caracteres.Mage;
+import Personajes.Caracteres.Monk;
+import Personajes.Caracteres.Robber;
+import Personajes.Caracteres.Warrior;
+
+public class Start {
+	private String[] ch = {"MAGO", "GUERRERO", "ARQUERO", "CABALLERO", "MONJE", "LADRON"};
+	private int State = 0;
+	public Start() {}
+	public  int getStartState() {
+		return this.State;
+	}
+	public  void clearScreen() {
+		try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {}
+	}
+	
+	public void gameClose() {
+		System.exit(0);
+	}
+	public void setOption(int op) {
+		Scanner s = new Scanner(System.in);
+		User user = new User();
+		this.clearScreen();
+		try {
+			Thread.sleep(4000);
+			if(op == 0) {
+			System.out.println("Elije tu Nombre de Batalla!!");	
+			String name = s.nextLine();
+			user.setName(name);
+			Thread.sleep(1000);	
+				
+				
+				
+			System.out.println("Bienvenido Viajero "+user.getName() + " Elige tu Personaje");
+			int icm = 0;
+			for(String x : ch) {
+					System.out.println(this.formatOption(x, icm));
+					icm++;
+			}
+			int opt = s.nextInt();	
+			
+			if(opt == 0) {
+					user.setCharter(new Mage(user.getName(), 200,200,200));
+					
+			}else if(opt == 1) {
+				user.setCharter(new Warrior(user.getName(), 200,200,200));
+			}else if(opt == 2) {
+				user.setCharter(new Archer(user.getName(), 200,200,200));
+			}else if(opt == 3 ) {
+				user.setCharter(new Knight(user.getName(), 200,200,200));
+			}else if(opt == 4) {
+				user.setCharter(new Monk(user.getName(), 200,200,200));
+			}else if(opt == 5) {
+				user.setCharter(new Robber(user.getName(), 200,200,200));
+			}
+			
+					
+				
+				
+			}else if(op == 1){
+				//nothing here ):
+			}else if(op == 2) {
+				this.gameClose();
+			}
+			
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	
+		
+	}
+	 private String formatOption(String ch, int icm) {
+	        return "[" + icm + "] " + ch;
+	   }
+}

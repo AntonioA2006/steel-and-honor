@@ -1,7 +1,7 @@
 package Personajes.Caracteres;
-class Warrior extends Caracter {
-    public Warrior(String name, int hp, int attack, int defense) {
-        super(name, hp, attack, defense);
+public class Warrior extends Caracter {
+    public Warrior(String name, int hp, int attack, int defense, String chName) {
+        super(name, hp, attack, defense, chName);
     }
 
     @Override
@@ -9,4 +9,5 @@ class Warrior extends Caracter {
         System.out.println(name + " usa Slash!");
         target.takeDamage(attack + 5);
     }
+    
 }

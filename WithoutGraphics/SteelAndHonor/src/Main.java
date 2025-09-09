@@ -11,6 +11,14 @@ public class Main {
 	public static final String GREEN = "\u001B[32m";
 	public static final String YELLOW = "\u001B[33m";
 	public static final String BLUE = "\u001B[34m";
+	public static final String BANNER = """
+            _________ __                .__       _____              .___   ___ ___                              
+           /   _____//  |_  ____   ____ |  |     /  _  \\   ____    __| _/  /   |   \\  ____   ____   ___________  
+           \\_____  \\\\   __\\/ __ \\_/ __ \\|  |    /  /_\\  \\ /    \\  / __ |  /    ~    \\/  _ \\ /    \\ /  _ \\_  __ \\ 
+           /        \\|  | \\  ___/\\  ___/|  |__ /    |    \\   |  \\/ /_/ |  \\    Y    (  <_> )   |  (  <_> )  | \\/ 
+          /_______  /|__|  \\___  >\\___  >____/ \\____|__  /___|  /\\____ |   \\___|_  / \\____/|___|  /\\____/|__|    
+                  \\/           \\/     \\/               \\/     \\/      \\/         \\/             \\/                
+           """;
 	
 	public static void clearScreen() {
 		try {
@@ -28,7 +36,16 @@ public class Main {
 		Scanner s = new Scanner(System.in);
 		clearScreen();
 		try {
-		
+			
+			
+			System.out.println(CYAN + BANNER + RESET);
+			
+			
+			
+			
+			
+			Thread.sleep(4000);
+			clearScreen();
 			System.out.println(CYAN +
 					" __      __       .__                               \n" +
 					"/  \\    /  \\ ____ |  |   ____  ____   _____   ____  \n" +
@@ -51,34 +68,18 @@ public class Main {
 			
 			System.out.println(CYAN + option + RESET);
 			System.out.println(repeatChar('-',80));
-			System.out.println("LOGIN [0]" + "   " + "REGISTER [1]" + "  " + "OTHER [EXIT]" );
+			System.out.println("NEW GAME [0]" + "   " + "PLAY [1]" + "  " + "CLOSE [2]" );
 			//https://patorjk.com/software/taag
 			// System.out.println(CYAN+ register + RESET );
 			int op = s.nextInt();
 			Start start = new Start();
-			if(op == 0|| op == 1) {
-				clearScreen();
-				start.setOption(op);
-				//TODO: AGREGAR sqlite para el registro
-				
-				
-			}else {
-				start.gameClose();
-			}
+			start.setOption(op);
 			
 			
 		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
 		
-		
-		
-			
-		
-		
-		
-		
-		Caracter mage = new Mage("Antonio", 200,2000,222);
 	}
 
 }
