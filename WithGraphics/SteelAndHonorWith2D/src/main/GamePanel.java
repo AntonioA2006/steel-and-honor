@@ -1,0 +1,116 @@
+package main;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
+
+import Tile.TileManager;
+import entity.Player;
+
+public class GamePanel extends JPanel implements Runnable {
+
+	//Configuraciones de vetana se setean como constantess
+	final int originalTitleSize = 16; // esto ajusta a 16 x 16 del jugador/npc 
+	final int scale = 3;
+	
+	public final int titleSize = scale * originalTitleSize;
+	public final int maxScreenCol = 16;
+	public final int maxScreenRow = 12; //asignamos un size de 2:3 recatangular
+	
+	public final int screenWith = titleSize * maxScreenCol; //768 px
+	public final int screenHeight = titleSize * maxScreenRow; //576px
+	
+	Thread GameThread;
+	KeyHandler keyHadler = new KeyHandler(); 
+	TileManager tileManager = new TileManager(this);
+	
+	Player player = new Player(this, keyHadler);
+	
+
+	//FPS (frames per second)
+	int FPS  = 60;
+	
+	public GamePanel() {
+		this.setPreferredSize(new Dimension(screenWith, screenHeight));// 768 x 576
+		this.setBackground(Color.black);//color de fondo
+		this.setDoubleBuffered(true);//solo mejoraos el rendimiento nada mas 9:
+		
+		this.addKeyListener(keyHadler);
+		this.setFocusable(true);
+		
+	}
+	
+	public void StarGameThread() {
+		GameThread = new Thread(this);
+		GameThread.start();
+	}
+
+	@Override//usamos un hilo para apartar el proceso del juego
+	public void run() {
+		double drawInterval = 1000000000/FPS;	
+		double delta = 0;
+		long lastTime = System.nanoTime();
+		long currentTime;
+		long timer = 0;
+		long drawCount = 0;
+		while(GameThread != null){
+			/*******Saque todo este codigo de un repo de git para manejar el clock game XD*******/
+			//System.out.println("THE GAME IS RUNNING");
+			currentTime = System.nanoTime();
+			
+			delta += (currentTime - lastTime) / drawInterval;
+			timer+=(currentTime - lastTime);
+			
+			lastTime = currentTime;
+			
+			if(delta >= 1) {
+				//UPDATE : actualizamos la posicion del caracter
+				update();
+				
+				//DRAW: dibujamos dicho cambio
+				repaint();
+				drawCount++;
+				delta--;
+				
+			}
+			
+			if(timer >= 1000000000) {
+				System.out.println("FPS : " + drawCount);
+				drawCount = 0;
+				timer = 0;
+			}
+			
+		}
+		
+		
+	}
+	public void update() {
+		player.update();
+	}
+	
+	/*
+	 * 	!!!!OJO!!!!
+	 * paintComponent es un metodo de la clase Jpanel para dibujar informacion
+	 * usamos super en GamePanel ya que es una subclase de este mismo 
+	 */
+	public void paintComponent(Graphics g) {//esta clase es como un apiz dibuja xDD
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;//parseamos son casi lo mismo pero segun chatGPT tiene mas funciones para dibujar
+		tileManager.draw(g2);
+		
+		
+		
+		
+		
+		player.draw(g2);
+		g2.dispose();
+		
+		
+	}
+			
+	
+	
+	
+}
