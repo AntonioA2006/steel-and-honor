@@ -45,7 +45,7 @@ public class Player extends Entity {
 			left2 = ImageIO.read(getClass().getResource("/player/boy_left_2.png"));
 			right1 = ImageIO.read(getClass().getResource("/player/boy_right_1.png"));
 			right2 = ImageIO.read(getClass().getResource("/player/boy_right_2.png"));
-			
+			onion = ImageIO.read(getClass().getResource("/player/onion.png"));
 		}catch(IOException e) {
 				e.printStackTrace();
 		}
@@ -96,7 +96,7 @@ public class Player extends Entity {
 		 */
 		
 		BufferedImage image = null;
-			
+		
 			if(direction.equals("up")) {
 				if(spriteNumber == 1) {
 					  image = up1;
@@ -129,9 +129,8 @@ public class Player extends Entity {
 			}
 			
 			// el "null" de drawImage se debe a el ImageObserver algo relacionado con el cambio de imagen
-			
-			g2.drawImage(image, x, y, gamePanel.titleSize, gamePanel.titleSize, null);
-			
+			g2.drawImage(image, x, y, (int)(gamePanel.titleSize ), (int)(gamePanel.titleSize ), null);
+
 		
 		
 		

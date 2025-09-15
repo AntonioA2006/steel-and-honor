@@ -28,6 +28,9 @@ public class TileManager {
 			tile[2] = new Tile();
 			tile[2].image = ImageIO.read(getClass().getResource("/tiles/water.png")); 
 			
+			tile[3] = new Tile();
+			tile[3].image = ImageIO.read(getClass().getResource("/tiles/sand.png")); 
+			
 		}catch(IOException e){
 			e.printStackTrace();
 		}
@@ -41,7 +44,7 @@ public class TileManager {
 		//mapeamos el mapa
 		
 		while(col < gamePanel.maxScreenCol && row < gamePanel.maxScreenRow) {
-				g2.drawImage(tile[0].image, x, y, gamePanel.titleSize, gamePanel.titleSize, null);
+				g2.drawImage(tile[3].image, x, y, gamePanel.titleSize, gamePanel.titleSize, null);
 				col++;
 				x+= gamePanel.titleSize;
 				
