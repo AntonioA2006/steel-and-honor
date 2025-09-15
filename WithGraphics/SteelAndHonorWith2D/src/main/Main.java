@@ -1,28 +1,34 @@
 package main;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Main {
 
-	public static void main(String[] args) {
-		
-		JFrame Window  = new JFrame();//creamos una Ventana
-		Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//botos x para salir
-		Window.setResizable(false);//no podemos cambiar el tamamno de la vetana
-		Window.setTitle("StellAndHonor");
-		
-		
-		
-			
-		GamePanel gamePanel = new GamePanel();
-		Window.add(gamePanel);
-		
-		Window.pack();		
-		Window.setLocationRelativeTo(null);//centramos la pantalla al centro
-		Window.setVisible(true);
-		gamePanel.StarGameThread();
-		
+    public static void main(String[] args) {
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Steel And Honor");
 
-	}
 
+        MainMenuPanel menu = new MainMenuPanel(
+            e -> {
+              
+                window.getContentPane().removeAll();
+                GamePanel gamePanel = new GamePanel();
+                window.add(gamePanel);
+                gamePanel.setFocusable(true);
+                gamePanel.requestFocusInWindow();
+                window.revalidate();
+                window.pack();
+                gamePanel.StarGameThread();
+            },
+            e -> System.exit(0)
+        );
+
+        window.add(menu);
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+    }
 }
