@@ -2,6 +2,7 @@ package entity;
 import main.KeyHandler;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.IIOException;
@@ -15,20 +16,25 @@ public class Player extends Entity {
 	GamePanel gamePanel;
 	KeyHandler keyHandler;
 
-	
-	
+	public final int screenX;
+	public final int screenY;
 	
 	public Player(GamePanel gp, KeyHandler kh) {
 		this.gamePanel = gp;
 		this.keyHandler = kh;
 		setDefaultValues();
 		getPlayerImage();
+		screenX = gp.screenWith / 2 - (gp.titleSize / 2);
+		screenY = gp.screenHeight / 2 - (gp.titleSize /2);
+		
+		//instanseamos el hit-Box
+		solidArea = new Rectangle(8, 16, 32, 32); //aqui instaceamos de Entity
 	}
 	
 	
 	public void setDefaultValues() {
-		x = 100;
-		y = 100;
+		Worldx = gamePanel.titleSize * 23;
+		Worldy = gamePanel.titleSize * 21;
 		speed = 4;
 		direction = "down";
 	}
@@ -57,23 +63,46 @@ public class Player extends Entity {
 		if(keyHandler.upPressed == true || keyHandler.downPressed == true || keyHandler.leftPressed == true ||keyHandler.rightPressed == true ) {
 				if(keyHandler.upPressed == true) {
 					direction = "up";
-					y -=  speed;
+				
 					
 					
 				}else if(keyHandler.downPressed == true) {
 					direction = "down";
-					y +=  speed;
 				
 				}
 				else if(keyHandler.leftPressed == true) {
 					direction = "left";
-					x -=  speed;
+					
 					
 				}else if(keyHandler.rightPressed == true) {
 					direction = "right";
-					x +=  speed;
+					
 				}
 				spriteCounter++;
+				CollisionOn = false;
+				gamePanel.collision.checkTile(this);
+				
+				//SI LA COLISION ES VERDADERA EL JUGAR NO C PUEDO MOVER EN ESA DIRECCION
+				
+				if(CollisionOn == false) {
+						
+					if(direction.equals("up")) {
+						Worldy -=  speed;
+					}else if(direction.equals("down")) {
+						Worldy +=  speed;
+						
+					}else if(direction.equals("left")) {
+						Worldx -=  speed;
+					}else if(direction.equals("right")) {
+						Worldx +=  speed;
+					}
+					
+					
+					
+				}
+				
+				
+				
 				//recordemos que este metodo se manda a llamr 60 veces por segundo!!
 				if(spriteCounter > 12) {
 					if(spriteNumber == 1) {
@@ -129,7 +158,7 @@ public class Player extends Entity {
 			}
 			
 			// el "null" de drawImage se debe a el ImageObserver algo relacionado con el cambio de imagen
-			g2.drawImage(image, x, y, (int)(gamePanel.titleSize ), (int)(gamePanel.titleSize ), null);
+			g2.drawImage(image, screenX, screenY, (int)(gamePanel.titleSize ), (int)(gamePanel.titleSize ), null);
 
 		
 		

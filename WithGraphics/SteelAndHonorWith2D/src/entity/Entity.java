@@ -1,10 +1,11 @@
 package entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 //clase para mejar personajes, NPC, etc..
 public class Entity {
-	public int x, y;
+	public int Worldx, Worldy;
 	public int speed;
 	
 	
@@ -13,5 +14,9 @@ public class Entity {
 	public String direction;
 	public int spriteCounter = 0;
 	public int spriteNumber = 1;
+	
+	//hitbox por Entidad
+	public Rectangle solidArea;
+	public boolean CollisionOn = false;
 	
 }

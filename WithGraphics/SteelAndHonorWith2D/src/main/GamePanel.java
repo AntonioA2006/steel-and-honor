@@ -16,19 +16,27 @@ public class GamePanel extends JPanel implements Runnable {
 	final int scale = 3;
 	
 	public final int titleSize = scale * originalTitleSize;
-	public final int maxScreenCol = 18;
+	public final int maxScreenCol = 16;
 	public final int maxScreenRow = 12; //asignamos un size de 2:3 recatangular
 	
 	public final int screenWith = titleSize * maxScreenCol; //768 px
 	public final int screenHeight = titleSize * maxScreenRow; //576px
 	
 	Thread GameThread;
+	public CollisionChecker collision = new CollisionChecker(this);
+	
 	KeyHandler keyHadler = new KeyHandler(); 
 	TileManager tileManager = new TileManager(this);
 	
-	Player player = new Player(this, keyHadler);
+	public Player player = new Player(this, keyHadler);
 	
-
+	//Configuraciones del Mundo
+	
+	public final int wordMaxCol = 50;
+	public final int wordMaxRow = 50;
+	public final int wordWindth = titleSize * wordMaxCol;
+	public final int wordHeight = titleSize * wordMaxRow;
+	
 	//FPS (frames per second)
 	int FPS  = 60;
 	
