@@ -1,11 +1,8 @@
+import Personajes.Caracteres.Mage;
 import java.util.Scanner;
+import Personajes.Caracteres.Caracter;
 import Game.User.Start;
 
-class WrongChoiceException extends Exception {
-    public WrongChoiceException(String message) {
-        super(message);
-    }
-}
 
 public class Main {
 

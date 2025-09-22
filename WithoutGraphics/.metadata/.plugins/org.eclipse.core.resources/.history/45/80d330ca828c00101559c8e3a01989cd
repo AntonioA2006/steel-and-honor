@@ -1,7 +1,0 @@
-package Game.User;
-
-public class User {
-	public User(String name, int exp,int level, int gold ) {
-		
-	}
-}

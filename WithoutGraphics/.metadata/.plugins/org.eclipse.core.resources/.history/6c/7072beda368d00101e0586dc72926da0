@@ -3,6 +3,7 @@ package Game.User;
 import java.util.Scanner;
 
 import Personajes.Caracteres.Archer;
+import Personajes.Caracteres.Caracter;
 import Personajes.Caracteres.Knight;
 import Personajes.Caracteres.Mage;
 import Personajes.Caracteres.Monk;
