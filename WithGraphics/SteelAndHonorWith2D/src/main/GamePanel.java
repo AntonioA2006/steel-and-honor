@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import Tile.TileManager;
 import entity.Player;
+import object.SuperObject;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -23,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int screenHeight = titleSize * maxScreenRow; //576px
 	
 	Thread GameThread;
+	public AssetSetter aSetter = new AssetSetter(this);
 	public CollisionChecker collision = new CollisionChecker(this);
 	
 	KeyHandler keyHadler = new KeyHandler(); 
@@ -39,6 +41,11 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	//FPS (frames per second)
 	int FPS  = 60;
+	//aqui preparamos el juego para que podamos pintar como maximo 10objetos 
+	public SuperObject obj[] = new SuperObject[10];
+	
+	
+	
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWith, screenHeight));// 768 x 576
@@ -48,6 +55,9 @@ public class GamePanel extends JPanel implements Runnable {
 		this.addKeyListener(keyHadler);
 		this.setFocusable(true);
 		
+	}
+	public void setUpGame() {
+		aSetter.setObject();
 	}
 	
 	public void StarGameThread() {
@@ -103,12 +113,17 @@ public class GamePanel extends JPanel implements Runnable {
 	 * paintComponent es un metodo de la clase Jpanel para dibujar informacion
 	 * usamos super en GamePanel ya que es una subclase de este mismo 
 	 */
-	public void paintComponent(Graphics g) {//esta clase es como un apiz dibuja xDD
+	public void paintComponent(Graphics g) {//esta clase es como un lapiz dibuja xDD
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;//parseamos son casi lo mismo pero segun chatGPT tiene mas funciones para dibujar
 		tileManager.draw(g2);
 		
 		
+		for(int i = 0; i < obj.length; i++) {
+			if(obj[i] != null) {
+				obj[i].draw(g2, this);
+			}
+		}
 		
 		
 		
@@ -118,7 +133,4 @@ public class GamePanel extends JPanel implements Runnable {
 		
 	}
 			
-	
-	
-	
 }

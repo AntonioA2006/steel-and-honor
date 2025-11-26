@@ -16,7 +16,7 @@ public class CollisionChecker {
 		/*
 		 * 
 		 * Recordemos que el caracter mide por default lo mismo que una losa que son aprox 48px
-		 * La hitbox no puedo medir eso ya que no quedaria margen para la colision asu que obtenemos
+		 * La hitbox no puedo medir eso ya que no quedaria margen para la colision asi que obtenemos
 		 * la hit box de la siguiente manera
 		 * 
 		 * solidArea = new Rectangle(8, 16, 32, 32); //aqui instaceamos de Entity

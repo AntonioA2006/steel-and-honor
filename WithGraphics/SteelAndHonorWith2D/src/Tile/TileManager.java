@@ -60,6 +60,7 @@ public class TileManager {
 			e.printStackTrace();
 		}
 		
+		
 	}
 	
 	public void getTileImage() {
@@ -95,7 +96,7 @@ public class TileManager {
 		
 		//mapeamos el mapa
 		
-		while(worldCol < gamePanel.wordMaxCol && wordRow < gamePanel.wordMaxRow) {
+		while(worldCol < gamePanel.wordMaxCol  && wordRow < gamePanel.wordMaxRow) {
 			
 				int tileNum = mapTileNum[worldCol][wordRow];
 				
@@ -107,17 +108,17 @@ public class TileManager {
 				//wordX + gamePanel.titleSize con la sentencia (wordX + gamePanel.titleSize) controlamos el renderizado 
 				
 				if( 
-					wordX + gamePanel.titleSize > gamePanel.player.Worldx - gamePanel.player.screenX 
-					&& wordX - gamePanel.titleSize < gamePanel.player.Worldx + gamePanel.player.screenX
-					&& wordY + gamePanel.titleSize > gamePanel.player.Worldy - gamePanel.player.screenY
-					&& wordY - gamePanel.titleSize < gamePanel.player.Worldy + gamePanel.player.screenY	
-				  ) {
-					
+						wordX + gamePanel.titleSize > gamePanel.player.Worldx - gamePanel.player.screenX 
+						&& wordX - gamePanel.titleSize < gamePanel.player.Worldx + gamePanel.player.screenX
+						&& wordY + gamePanel.titleSize > gamePanel.player.Worldy - gamePanel.player.screenY
+						&& wordY - gamePanel.titleSize < gamePanel.player.Worldy + gamePanel.player.screenY	
+					  ) {
+						
 					g2.drawImage(tile[tileNum].image, screenX, screenY, gamePanel.titleSize, gamePanel.titleSize, null);
 					
-					}
+						
+						}
 				
-			
 				worldCol++;
 			
 				if(worldCol == gamePanel.wordMaxCol) {

@@ -21,6 +21,7 @@ public class Main {
                 gamePanel.requestFocusInWindow();
                 window.revalidate();
                 window.pack();
+                gamePanel.setUpGame();
                 gamePanel.StarGameThread();
             },
             e -> System.exit(0)

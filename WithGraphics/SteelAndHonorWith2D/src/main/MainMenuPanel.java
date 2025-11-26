@@ -5,8 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MainMenuPanel extends JPanel {
+	
+	public JButton newGame, quit;
+	GamePanel gamePanel;
     
     public MainMenuPanel(ActionListener startGameAction, ActionListener quitAction) {
+    	gamePanel = new GamePanel();
+    	
+    	
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(900, 600));
@@ -20,8 +26,8 @@ public class MainMenuPanel extends JPanel {
         gbc.gridy = 0;
         add(title, gbc);
 
-        JButton newGame = new JButton("NEW GAME");
-        JButton quit = new JButton("QUIT");
+         newGame = new JButton("NEW GAME");
+         quit = new JButton("QUIT");
 
    
         JButton[] buttons = {newGame, quit};
