@@ -11,6 +11,7 @@ public class Main {
         window.setTitle("Steel And Honor");
 
 
+        	// El usuario esta registrado? 
         MainMenuPanel menu = new MainMenuPanel(
             e -> {
               

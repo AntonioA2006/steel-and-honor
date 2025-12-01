@@ -17,6 +17,7 @@ public class Entity {
 	
 	//hitbox por Entidad
 	public Rectangle solidArea;
+	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean CollisionOn = false;
 	
 }

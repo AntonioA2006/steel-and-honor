@@ -18,17 +18,21 @@ public class Player extends Entity {
 
 	public final int screenX;
 	public final int screenY;
+	public int hasKey = 0;
 	
 	public Player(GamePanel gp, KeyHandler kh) {
 		this.gamePanel = gp;
 		this.keyHandler = kh;
+		
 		setDefaultValues();
 		getPlayerImage();
 		screenX = gp.screenWith / 2 - (gp.titleSize / 2);
 		screenY = gp.screenHeight / 2 - (gp.titleSize /2);
-		
+	
 		//instanseamos el hit-Box
 		solidArea = new Rectangle(8, 16, 32, 32); //aqui instaceamos de Entity
+		this.solidAreaDefaultX  = solidArea.x;
+		this.solidAreaDefaultY  = solidArea.y;
 	}
 	
 	
@@ -80,10 +84,14 @@ public class Player extends Entity {
 				}
 				spriteCounter++;
 				CollisionOn = false;
+				
 				gamePanel.collision.checkTile(this);
 				
-				//SI LA COLISION ES VERDADERA EL JUGAR NO C PUEDO MOVER EN ESA DIRECCION
+				int index = gamePanel.collision.checkObject(this, true);
+				pickUpObject(index);
 				
+				
+				//SI LA COLISION ES VERDADERA EL JUGAR NO C PUEDO MOVER EN ESA DIRECCION
 				if(CollisionOn == false) {
 						
 					if(direction.equals("up")) {
@@ -116,7 +124,31 @@ public class Player extends Entity {
 		   }
 		
 	}
-
+	public void pickUpObject(int index) {
+		if(index != 999) {
+			String objName = gamePanel.obj[index].name;
+			
+			if(objName.equals("Key")) {
+				this.hasKey++;
+				gamePanel.obj[index] = null;
+				gamePanel.soundEfect(1);
+					
+				System.out.println("you have a" + this.hasKey + " in your invetory");
+				
+			}else if(objName.equals("Door")) {
+				if(this.hasKey > 0) {
+					gamePanel.soundEfect(3);
+					gamePanel.obj[index] = null;
+					this.hasKey--;
+				}
+				System.out.println("you have a" + this.hasKey + " in your invetory");
+			}else if(objName.equals("Boots")) {
+				speed += 2;
+				gamePanel.soundEfect(2);
+				gamePanel.obj[index] = null;
+			}
+		}
+	}
 	public void draw(Graphics2D g2) {
 		/* 	datos d eprueba
 		 * 	g2.setColor(Color.white);

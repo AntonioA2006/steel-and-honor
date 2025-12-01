@@ -23,13 +23,14 @@ public class GamePanel extends JPanel implements Runnable {
 	public final int screenWith = titleSize * maxScreenCol; //768 px
 	public final int screenHeight = titleSize * maxScreenRow; //576px
 	
-	Thread GameThread;
+	
 	public AssetSetter aSetter = new AssetSetter(this);
 	public CollisionChecker collision = new CollisionChecker(this);
 	
 	KeyHandler keyHadler = new KeyHandler(); 
 	TileManager tileManager = new TileManager(this);
-	
+	Sound sound = new Sound();
+	Thread GameThread;
 	public Player player = new Player(this, keyHadler);
 	
 	//Configuraciones del Mundo
@@ -58,6 +59,7 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	public void setUpGame() {
 		aSetter.setObject();
+		playMusic(0);
 	}
 	
 	public void StarGameThread() {
@@ -132,5 +134,20 @@ public class GamePanel extends JPanel implements Runnable {
 		
 		
 	}
+	
+	public void playMusic(int i) {
+		sound.setFile(i);
+		sound.play();
+		sound.loop();
+	}
+	public void stopMusic() {
+		sound.stop();
+	}
+	public void soundEfect(int i) {
+		sound.setFile(i);
+		sound.play();
+	}
+	
+	
 			
 }
