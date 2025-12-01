@@ -132,20 +132,28 @@ public class Player extends Entity {
 				this.hasKey++;
 				gamePanel.obj[index] = null;
 				gamePanel.soundEfect(1);
-					
-				System.out.println("you have a" + this.hasKey + " in your invetory");
+				gamePanel.ui.showMessage("Tienes una LLave!!");
+				//System.out.println("you have a" + this.hasKey + " in your invetory");
 				
 			}else if(objName.equals("Door")) {
 				if(this.hasKey > 0) {
 					gamePanel.soundEfect(3);
 					gamePanel.obj[index] = null;
 					this.hasKey--;
+					gamePanel.ui.showMessage("Has abierto una puerta!!");
+				}else {
+					gamePanel.ui.showMessage("Tu necesitas una Llave!!");
 				}
 				System.out.println("you have a" + this.hasKey + " in your invetory");
 			}else if(objName.equals("Boots")) {
 				speed += 2;
 				gamePanel.soundEfect(2);
 				gamePanel.obj[index] = null;
+				gamePanel.ui.showMessage("Velocidad X 2!!");
+			}else if(objName.equals("Chest")) {
+				gamePanel.ui.gameFinished = true;
+				gamePanel.stopMusic();
+				gamePanel.soundEfect(4);
 			}
 		}
 	}
